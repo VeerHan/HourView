@@ -77,6 +77,7 @@ public class HourView extends LinearLayout {
             Log.d(TAG, "list.size() == 1 list = " + list.toString());
             Conference conference = list.get(0);
             addView(conference, 0, 0);
+            list = null;
         }
         if (list != null & list.size() > 1) {
             Log.d(TAG, "list.size() > 1");
@@ -87,13 +88,13 @@ public class HourView extends LinearLayout {
                     if (j > i) {
                         List<Conference> subList = list.subList(i + 1, list.size());
                         Log.d(TAG, "sortList: subList = " + subList.toString());
-                        sortList(subList);
                         //add view
                         for (int k = 0; k <= i; k++) {
                             //Collections.sort(list, updateTimeComparator);
                             Conference conference = list.get(k);
                             addView(conference, i, k);
                         }
+                        sortList(subList);
                         break;
                     }
                 }
