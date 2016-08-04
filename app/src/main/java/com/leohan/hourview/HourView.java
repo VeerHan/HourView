@@ -95,10 +95,15 @@ public class HourView extends LinearLayout {
                             addView(conference, i, k);
                         }
                         sortList(subList);
-                        break;
+                        return;
                     }
                 }
             }
+        }
+        for (int k = 0; k < list.size(); k++) {
+            //Collections.sort(list, updateTimeComparator);
+            Conference conference = list.get(k);
+            addView(conference, list.size()-1, k);
         }
     }
 
@@ -133,7 +138,7 @@ public class HourView extends LinearLayout {
     private TextView getTextView(Conference conference) {
         TextView textView = new TextView(context);
         textView.setText(conference.getDesc());
-        textView.setTextColor(Color.BLACK);
+        textView.setTextColor(Color.WHITE);
         textView.setGravity(Gravity.CENTER);
         textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         textView.setOnClickListener(new OnClickListener() {
