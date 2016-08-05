@@ -125,13 +125,13 @@ public class HourView extends LinearLayout {
         button.setText(conference.getDesc());
         button.setTextColor(Color.WHITE);
         button.setGravity(Gravity.CENTER);
+        button.setAllCaps(false);
         button.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = list.indexOf(conference);
                 onItemClickListener.onItemClick(position, conference);
-                //Toast.makeText(context, conference.getDesc(), Toast.LENGTH_SHORT).show();
             }
         });
         //取消硬件加速，否则文本不能正常显示

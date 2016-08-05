@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         conference = new Conference(1, "t1", 2, 7);
         list.add(conference);
-        conference = new Conference(2, "t2", 2, 6);
+        conference = new Conference(2, "T2", 2, 6);
         list.add(conference);
         conference = new Conference(3, "t3", 5, 16);
         list.add(conference);
