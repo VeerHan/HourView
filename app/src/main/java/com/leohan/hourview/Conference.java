@@ -6,22 +6,16 @@ package com.leohan.hourview;
 public class Conference {
     private int id;
     private String desc;
-    private long startTime, endTime;
-    private long localUpdateTime;//该数据在本地数据库中的更新时间
+    private float startTime, endTime;
+    private float localUpdateTime;//该数据在本地数据库中的更新时间
 
-    public Conference(int id, String desc, long startTime, long endTime, long localUpdateTime) {
+    public Conference(int id, String desc, float startTime, float endTime) {
         this.id = id;
         this.desc = desc;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.localUpdateTime = localUpdateTime;
     }
 
-    public Conference(String desc, long startTime, long endTime) {
-        this.desc = desc;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
 
     public int getId() {
         return id;
@@ -39,27 +33,27 @@ public class Conference {
         this.desc = desc;
     }
 
-    public long getStartTime() {
+    public float getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(float startTime) {
         this.startTime = startTime;
     }
 
-    public long getEndTime() {
+    public float getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(float endTime) {
         this.endTime = endTime;
     }
 
-    public long getLocalUpdateTime() {
+    public float getLocalUpdateTime() {
         return localUpdateTime;
     }
 
-    public void setLocalUpdateTime(long localUpdateTime) {
+    public void setLocalUpdateTime(float localUpdateTime) {
         this.localUpdateTime = localUpdateTime;
     }
 

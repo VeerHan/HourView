@@ -423,6 +423,6 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="80dp"
             android:alpha="0.6"
-            android:background="@color/colorPrimary"></AbsoluteLayout>
+            android:background="@color/colorPrimary" />
     </FrameLayout>
 </ScrollView>
