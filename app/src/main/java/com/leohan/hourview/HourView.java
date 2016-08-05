@@ -11,7 +11,6 @@ import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -106,7 +105,7 @@ public class HourView extends LinearLayout {
     }
 
     /**
-     * 添加TextView的方法
+     * 添加View的方法
      */
     private void addView(Conference conference, int i, int k) {
         float startTime = conference.getStartTime();
@@ -159,7 +158,7 @@ public class HourView extends LinearLayout {
      */
     public void add(Conference conference) {
         if (list.add(conference)) {
-            notifyDataSetChanged(list);
+            resetDataList(list);
         }
     }
 
@@ -170,7 +169,7 @@ public class HourView extends LinearLayout {
      */
     public void remove(Conference conference) {
         if (list.contains(conference) && list.remove(conference)) {
-            notifyDataSetChanged(list);
+            resetDataList(list);
         }
     }
 
@@ -185,7 +184,7 @@ public class HourView extends LinearLayout {
             if (c.getId() == conference.getId()) {
                 list.remove(c);
                 list.add(conference);
-                notifyDataSetChanged(list);
+                resetDataList(list);
             }
         }
     }
@@ -200,7 +199,7 @@ public class HourView extends LinearLayout {
     /**
      * 当数据源改变时传入list集合重新绘制所有元素
      */
-    public void notifyDataSetChanged(List<Conference> list) {
+    public void resetDataList(List<Conference> list) {
         contentLayout.removeAllViews();
         setDataList(list);
     }

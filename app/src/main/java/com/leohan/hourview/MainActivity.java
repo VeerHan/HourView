@@ -8,6 +8,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * HourView Demo
+ *
+ * @author lei.han
+ * @time 2016/8/4
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -21,6 +27,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         hourView = (HourView) findViewById(R.id.hourView);
 
+        //添加测试数据
+        addTestData();
+        //绑定数据源
+        hourView.setDataList(list);
+
+        //获取数据源
+        List<Conference> data = hourView.getDataList();
+        Log.d(TAG, "onCreate: data: " + data.toString());
+
+        //hourView的点击事件，同时提供了增删改事件，详见HourView的public方法
+        hourView.setOnItemClickListener(new HourView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Conference conference) {
+                Log.d(TAG, "onItemClick: " + "position = " + position + ", conference = " + conference.toString());
+                //点击该元素将其删除，仅做测试
+                hourView.remove(conference);
+            }
+        });
+    }
+
+    /**
+     * 添加测试数据
+     */
+    private void addTestData() {
         conference = new Conference(1, "t1", 2, 7);
         list.add(conference);
         conference = new Conference(2, "T2", 2, 6);
@@ -43,17 +73,5 @@ public class MainActivity extends AppCompatActivity {
         list.add(conference);
         conference = new Conference(11, "t11", 10.5f, 16.8f);
         list.add(conference);
-        hourView.setDataList(list);
-
-        List<Conference> data = hourView.getDataList();
-        Log.d(TAG, "onCreate: data: " + data.toString());
-
-        hourView.setOnItemClickListener(new HourView.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, Conference conference) {
-                Toast.makeText(MainActivity.this, "position = " + position + ", desc = " + conference.getDesc(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onItemClick: " + "position = " + position + ", conference = " + conference.toString());
-            }
-        });
     }
 }
