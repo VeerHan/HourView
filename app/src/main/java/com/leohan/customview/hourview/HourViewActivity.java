@@ -1,9 +1,11 @@
-package com.leohan.hourview;
+package com.leohan.customview.hourview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.leohan.customview.common.Conference;
+import com.leohan.customview.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,9 @@ import java.util.List;
  * @author lei.han
  * @time 2016/8/4
  */
-public class MainActivity extends AppCompatActivity {
+public class HourViewActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "HourViewActivity";
     private HourView hourView;
     private List<Conference> list = new ArrayList<>();
     private Conference conference;
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_hour_view);
         hourView = (HourView) findViewById(R.id.hourView);
 
         //添加测试数据

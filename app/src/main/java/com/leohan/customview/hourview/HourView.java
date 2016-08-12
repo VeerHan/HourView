@@ -1,4 +1,4 @@
-package com.leohan.hourview;
+package com.leohan.customview.hourview;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.leohan.customview.common.Conference;
+import com.leohan.customview.common.DimenUtil;
+import com.leohan.customview.R;
+import com.leohan.customview.common.StartTimeComparator;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +29,7 @@ public class HourView extends LinearLayout {
     /**
      * 每个元素的点击事件接口
      */
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(int position, Conference conference);
     }
 
@@ -121,6 +126,7 @@ public class HourView extends LinearLayout {
     @NonNull
     private Button getView(final Conference conference) {
         Button button = new Button(context);
+        button.setAlpha(0.6f);
         button.setText(conference.getDesc());
         button.setTextColor(Color.WHITE);
         button.setGravity(Gravity.CENTER);
