@@ -44,7 +44,7 @@ public class NoTimeHourView extends LinearLayout {
     private Context context;
     private StartTimeComparator startTimeComparator;
     //左边TextView的宽、高，单位dp
-    private int leftWidth = 0;
+    private int leftWidth = 50;
     private int leftHeight = 80;
     //分割线的高度，单位dp
     private int lineHeight = 1;
@@ -66,7 +66,7 @@ public class NoTimeHourView extends LinearLayout {
         View view = View.inflate(context, R.layout.no_time_hour_view, this);
         contentLayout = (AbsoluteLayout) view.findViewById(R.id.contentLayout);
         leftMargin = DimenUtil.dp2px(context, leftWidth);
-        contentWidth = DimenUtil.getScreenWidth(context) - leftMargin;
+        contentWidth = (DimenUtil.getScreenWidth(context) - leftMargin)/3;
         contentHeight = DimenUtil.dp2px(context, leftHeight * 24 + 23);
 //        Log.d(TAG, "leftMargin = " + leftMargin + " & contentLayout :contentWidth = " + contentWidth + ", contentHeight = " + contentHeight);
     }

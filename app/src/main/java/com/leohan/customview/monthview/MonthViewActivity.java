@@ -2,6 +2,7 @@ package com.leohan.customview.monthview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 
 import com.leohan.customview.R;
 

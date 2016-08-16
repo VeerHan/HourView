@@ -2,6 +2,7 @@ package com.leohan.customview.monthview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -16,13 +17,16 @@ import java.util.List;
  */
 public class ComboHourView extends LinearLayout {
 
+    private static final String TAG = "MonthView";
     private Context context;
     private NoTimeHourView leftView;
     private NoTimeHourView centerView;
     private NoTimeHourView rightView;
 
     public ComboHourView(Context context) {
-        super(context, null);
+        super(context);
+        this.context = context;
+        init();
     }
 
     public ComboHourView(Context context, AttributeSet attrs) {
@@ -39,21 +43,32 @@ public class ComboHourView extends LinearLayout {
     }
 
     /**
-     * 设置数据源
-     */
-    public void setDataList(List<Conference> list1, List<Conference> list2, List<Conference> list3) {
-        leftView.setDataList(list1);
-        centerView.setDataList(list2);
-        rightView.setDataList(list3);
-    }
-
-    /**
      * 重新设置数据源
      */
-    public void resetDataList(List<Conference> list1, List<Conference> list2, List<Conference> list3) {
+    public void resetDataList(final List<Conference> list1, final List<Conference> list2, final List<Conference> list3) {
         leftView.resetDataList(list1);
         centerView.resetDataList(list2);
         rightView.resetDataList(list3);
+
+        //hourView的点击事件，同时提供了增删改事件，详见HourView的public方法
+        leftView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Conference conference) {
+                Log.d(TAG, "onItemClick: " + list1.get(position).getDesc());
+            }
+        });
+        centerView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Conference conference) {
+                Log.d(TAG, "onItemClick: " + list2.get(position).getDesc());
+            }
+        });
+        rightView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Conference conference) {
+                Log.d(TAG, "onItemClick: " + list3.get(position).getDesc());
+            }
+        });
     }
 
 }

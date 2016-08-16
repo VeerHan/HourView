@@ -7,15 +7,18 @@
     <com.leohan.customview.monthview.NoTimeHourView
         android:id="@+id/leftView"
         android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="match_parent" />
 
     <com.leohan.customview.monthview.NoTimeHourView
         android:id="@+id/centerView"
         android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="match_parent" />
 
     <com.leohan.customview.monthview.NoTimeHourView
         android:id="@+id/rightView"
+        android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
 
