@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.leohan.customview.R;
-import com.leohan.customview.common.Conference;
+import com.leohan.customview.common.MultiConference;
 import com.leohan.customview.common.DimenUtil;
 import com.leohan.customview.common.StartTimeComparator;
 
@@ -30,7 +30,7 @@ public class NoTimeHourView extends LinearLayout {
      * 每个元素的点击事件接口
      */
     public interface OnItemClickListener {
-        void onItemClick(int position, Conference conference);
+        void onItemClick(int position, MultiConference conference);
     }
 
     private static final String TAG = "HourView";
@@ -40,7 +40,7 @@ public class NoTimeHourView extends LinearLayout {
     private AbsoluteLayout contentLayout;
     //右侧整块AbsoluteLayout的宽度和高度，单位px
     private int contentWidth, contentHeight;
-    private List<Conference> list;
+    private List<MultiConference> list;
     private Context context;
     private StartTimeComparator startTimeComparator;
     //左边TextView的宽、高，单位dp
@@ -72,12 +72,12 @@ public class NoTimeHourView extends LinearLayout {
     }
 
 
-    private void sortList(List<Conference> list) {
+    private void sortList(List<MultiConference> list) {
         if (list != null) {
             //当list里面只有一个元素时直接画出来
             if (list.size() == 1) {
                 Log.d(TAG, "list.size() == 1 list = " + list.toString());
-                Conference conference = list.get(0);
+                MultiConference conference = list.get(0);
                 addView(conference, 0, 0);
                 list = null;
             }
@@ -88,11 +88,11 @@ public class NoTimeHourView extends LinearLayout {
                     while (list.get(j).getEndTime() <= list.get(i + 1).getStartTime()) {
                         j++;
                         if (j > i) {
-                            List<Conference> subList = list.subList(i + 1, list.size());
+                            List<MultiConference> subList = list.subList(i + 1, list.size());
                             Log.d(TAG, "sortList: subList = " + subList.toString());
                             //add view
                             for (int k = 0; k <= i; k++) {
-                                Conference conference = list.get(k);
+                                MultiConference conference = list.get(k);
                                 addView(conference, i, k);
                             }
                             sortList(subList);
@@ -103,7 +103,7 @@ public class NoTimeHourView extends LinearLayout {
             }
 
             for (int i = 0; list != null && i < list.size(); i++) {
-                Conference conference = list.get(i);
+                MultiConference conference = list.get(i);
                 addView(conference, list.size() - 1, i);
             }
         }
@@ -112,7 +112,7 @@ public class NoTimeHourView extends LinearLayout {
     /**
      * 添加View的方法
      */
-    private void addView(Conference conference, int i, int k) {
+    private void addView(MultiConference conference, int i, int k) {
         float startTime = conference.getStartTime();
         float endTime = conference.getEndTime();
         int width = contentWidth / (i + 1);
@@ -124,7 +124,7 @@ public class NoTimeHourView extends LinearLayout {
 
 
     @NonNull
-    private Button getView(final Conference conference) {
+    private Button getView(final MultiConference conference) {
         Button button = new Button(context);
         button.setAlpha(0.6f);
         button.setText(conference.getDesc());
@@ -150,7 +150,7 @@ public class NoTimeHourView extends LinearLayout {
      *
      * @param list
      */
-    public void setDataList(List<Conference> list) {
+    public void setDataList(List<MultiConference> list) {
         this.list = list;
         Collections.sort(list, startTimeComparator);
         Log.d(TAG, "sort list = " + list.toString());
@@ -162,7 +162,7 @@ public class NoTimeHourView extends LinearLayout {
      *
      * @param conference
      */
-    public void add(Conference conference) {
+    public void add(MultiConference conference) {
         if (list.add(conference)) {
             resetDataList(list);
         }
@@ -173,7 +173,7 @@ public class NoTimeHourView extends LinearLayout {
      *
      * @param conference
      */
-    public void remove(Conference conference) {
+    public void remove(MultiConference conference) {
         if (list.contains(conference) && list.remove(conference)) {
             resetDataList(list);
         }
@@ -184,9 +184,9 @@ public class NoTimeHourView extends LinearLayout {
      *
      * @param conference
      */
-    public void update(Conference conference) {
+    public void update(MultiConference conference) {
         for (int i = 0; i < list.size(); i++) {
-            Conference c = list.get(i);
+            MultiConference c = list.get(i);
             if (c.getId() == conference.getId()) {
                 list.remove(c);
                 list.add(conference);
@@ -198,14 +198,14 @@ public class NoTimeHourView extends LinearLayout {
     /**
      * 获取数据源
      */
-    public List<Conference> getDataList() {
+    public List<MultiConference> getDataList() {
         return list;
     }
 
     /**
      * 当数据源改变时传入list集合重新绘制所有元素
      */
-    public void resetDataList(List<Conference> list) {
+    public void resetDataList(List<MultiConference> list) {
         contentLayout.removeAllViews();
         setDataList(list);
     }

@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="line">#E5E5E5</color>
+
+    <color name="conf_cloud">#f96868</color>
+    <color name="conf_place">#71aee2</color>
+    <color name="conf_none">#4f667b</color>
+
+
 </resources>

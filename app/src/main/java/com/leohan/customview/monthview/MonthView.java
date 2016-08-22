@@ -1,10 +1,7 @@
 package com.leohan.customview.monthview;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -14,18 +11,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.leohan.customview.R;
-import com.leohan.customview.common.Conference;
 import com.leohan.customview.common.DimenUtil;
-import com.leohan.customview.common.StartTimeComparator;
+import com.leohan.customview.common.MultiConference;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,16 +32,16 @@ public class MonthView extends LinearLayout {
      * 每个元素的点击事件接口
      */
     interface OnItemClickListener {
-        void onItemClick(int position, Conference conference);
+        void onItemClick(int position, MultiConference conference);
     }
 
     private static final String TAG = "MonthView";
-    private List<Conference> list;
+    private List<MultiConference> list;
     private Context context;
     private OnItemClickListener onItemClickListener;
     private ViewPager viewPager;
     private List<ComboHourView> comboHourViews;
-    private Conference conference;
+    private MultiConference conference;
     private ComboHourView comboHourView;
     //左侧时间列表TextView的宽度，单位px
     private int leftMargin;
@@ -181,7 +174,7 @@ public class MonthView extends LinearLayout {
      */
     private List addTestData() {
         list = new ArrayList<>();
-        conference = new Conference(6, "t6", 0, 1);
+        conference = new MultiConference(6, "t6", 0, 1,MultiConference.CONF_CLOUD);
         list.add(conference);
         return list;
     }

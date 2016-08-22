@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.leohan.customview.R;
-import com.leohan.customview.common.Conference;
+import com.leohan.customview.common.MultiConference;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class ComboHourView extends LinearLayout {
     /**
      * 重新设置数据源
      */
-    public void resetDataList(final List<Conference> list1, final List<Conference> list2, final List<Conference> list3) {
+    public void resetDataList(final List<MultiConference> list1, final List<MultiConference> list2, final List<MultiConference> list3) {
         leftView.resetDataList(list1);
         centerView.resetDataList(list2);
         rightView.resetDataList(list3);
@@ -53,19 +53,19 @@ public class ComboHourView extends LinearLayout {
         //hourView的点击事件，同时提供了增删改事件，详见HourView的public方法
         leftView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, Conference conference) {
+            public void onItemClick(int position, MultiConference conference) {
                 Log.d(TAG, "onItemClick: " + list1.get(position).getDesc());
             }
         });
         centerView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, Conference conference) {
+            public void onItemClick(int position, MultiConference conference) {
                 Log.d(TAG, "onItemClick: " + list2.get(position).getDesc());
             }
         });
         rightView.setOnItemClickListener(new NoTimeHourView.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, Conference conference) {
+            public void onItemClick(int position, MultiConference conference) {
                 Log.d(TAG, "onItemClick: " + list3.get(position).getDesc());
             }
         });
